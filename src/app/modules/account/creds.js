@@ -12,6 +12,5 @@ define(function(require) {
             var vm = this;
             return vm;
         }
-    }
-
+    };
 });

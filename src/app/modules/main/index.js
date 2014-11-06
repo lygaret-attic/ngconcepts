@@ -5,7 +5,7 @@ define(function(require) {
     // Note the same loading structure as in app.js
     var main = angular.module('notes.main', 
         [ 'ui.router'
-        , require('data/index').name
+        , require('lib/data/index').name
         ]);
 
     // # Module Index
@@ -18,8 +18,9 @@ define(function(require) {
 
     main.config(function($stateProvider) {
         $stateProvider
-            .state('main.list',   _.merge({ url: '', controllerAs: 'vm' }, require('./list')))
-            .state('main.detail', _.merge({ url: ':id', controllerAs: 'vm' }, require('./detail')))
+            .state('main.list',   _.merge({ url: '/' }, require('./list')))
+            .state('main.create', _.merge({ url: '/new' }, require('./create')))
+            .state('main.detail', _.merge({ url: '/:id' }, require('./detail')))
             ;
     });
 

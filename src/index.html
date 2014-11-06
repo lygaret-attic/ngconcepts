@@ -23,10 +23,7 @@
     <!-- endbuild -->
   </head>
   <body>
-    <div id="content" class="container" ng-controller="shellCtl as shell">
-        <ul ng-repeat="root in shell.navroots">
-            <li>{{ root }}</li>
-        </ul>
+    <div id="content" class="container" ng-controller="shell$ShellCtl as shell">
         <div ui-view></div>
     </div>
 

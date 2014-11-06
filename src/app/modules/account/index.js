@@ -4,7 +4,7 @@ define(function(require) {
     // # Account UI Definition
     var accounts = angular.module('notes.account',
         [ 'ui.router'
-        , require('data/index').name
+        , require('lib/data/index').name
         ]);
 
     // # Account Routes

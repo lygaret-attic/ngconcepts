@@ -19,10 +19,9 @@ define(function(require) {
     // source.
     var app = angular.module('notes', 
         [ 'ui.router'
-        , require('lib/navigationModel').name
-        , require('data/index').name
-        , require('main/index').name
-        , require('account/index').name
+        , require('modules/shell/index').name
+        , require('modules/main/index').name
+        , require('modules/account/index').name
         ]);
 
     // # Router
@@ -32,27 +31,13 @@ define(function(require) {
     app.config(function ($stateProvider, $urlRouterProvider) {
 
         // * redirect to the main module by default
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/notes/');
 
         // * mount the modules on top level paths
-        $stateProvider.state('main', { url: '/', abstract: true, templateUrl: 'app/main/index.tpl' });
-        $stateProvider.state('account', { url: '/account', abstract: true, templateUrl: 'app/account/index.tpl' });
+        $stateProvider.state('main', { url: '/notes', abstract: true, templateUrl: 'app/modules/main/index.tpl' });
+        $stateProvider.state('account', { url: '/account', abstract: true, templateUrl: 'app/modules/account/index.tpl' });
 
     });
-
-    // # Shell controller
-    // This is the vm for the root stuffs.
-    
-    app.controller('shellCtl', 
-        ['tslib.navigation$NavModel',
-        function(navModel) {
-            var vm = this;
-
-            vm.appName = "example notes app";
-            vm.navroots = navModel.roots();
-
-            return vm;
-        }]);
 
     // # Bootstrap
     // Because requirejs loads scripts asynchronously, we can't use the ngApp directive to bootstrap
